@@ -12,7 +12,7 @@ export const Navbar = () => {
         margin: '0 10px',
         cursor: 'pointer',
         transform: hoveredIcon === icon ? 'scale(1.1)' : 'scale(1)',
-        color: hoveredIcon === icon ? '#FFD700' : '#ff22df',
+        color: hoveredIcon === icon ? '#FFD700' : '#542770',
         transition: 'transform 0.3s, color 0.3s'
     });
   

@@ -42,13 +42,15 @@ function App() {
                 <Text
                     position={[-5, 8, 0]}
                     fontSize={10}
-                    color="black"
+                    color="#542770"
                     anchorX="center"
                     anchorY="middle"
-                    castShadow   // Enables the text mesh to cast shadows
-                >
+                    castShadow
+                    shadowColor="red"
+                    shadowBlur={10}
+                  >
                     Sajol Das
-                </Text>
+                  </Text>
                 <Text
                     position={[-6.5, -2, 0]}
                     fontSize={7}

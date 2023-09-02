@@ -13,11 +13,11 @@ export const GradientBackground = () => (
         }
       `}
       fragmentShader={`
-        varying vec2 vUv;
+        varying vec4 vUv;
         void main() {
-          // Change the background color to white
-          vec3 backgroundColor = vec3(1.0, 1.0, 1.0);
-          gl_FragColor = vec4(backgroundColor, 1.0);
+          // Change the background color to #BCDECC
+          vec4 backgroundColor = vec4(188, 222, 204, 1.0);
+          gl_FragColor = backgroundColor;
         }
       `}
     />
