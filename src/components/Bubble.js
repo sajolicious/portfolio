@@ -1,5 +1,7 @@
 import { useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
+import "./bubble.css";
+
 // Bubble Component
 export const Bubble = (props) => {
   const mesh = useRef();
@@ -44,9 +46,9 @@ export const Bubble = (props) => {
       onPointerOver={() => setHover(true)}
       onPointerOut={() => setHover(false)}
     >
-      <sphereGeometry args={[props.size || 1, 32, 32]} />
+      <sphereGeometry args={[props.size || 1, 50, 32]} />
       <meshStandardMaterial
-        color={props.color || (hovered ? 'red' : 'teal')}
+        color={props.color || (hovered ? 'red' : 'rgb(25,124,56)')}
         metalness={0.8}
         roughness={0.1}
         envMap={props.envMap}

@@ -1,7 +1,6 @@
 import React, {  useMemo, Suspense, useEffect } from 'react'
 import { Canvas} from '@react-three/fiber'
 import { OrbitControls, Environment, Text,Plane } from '@react-three/drei'
-import { EffectComposer, Bloom } from '@react-three/postprocessing'
 
 import {animateBackgroundColor}  from './components/Utility';
 import { GradientBackground } from './components/GradientBackground';
@@ -13,20 +12,7 @@ function App() {
     animateBackgroundColor()
   }, [])
 
-  const bubbles = useMemo(
-    () =>
-      Array(30)
-        .fill()
-        .map((_, i) => {
-          const pos = [
-            20 - Math.random() * 40,
-            20 - Math.random() * 40,
-            20 - Math.random() * 40,
-          ]
-          return <Bubble position={pos} key={i} />
-        }),
-    [],
-  )
+ 
 
   return (
     <div
@@ -55,8 +41,8 @@ function App() {
                 {/* Name with shadow */}
                 <Text
                     position={[-5, 8, 0]}
-                    fontSize={8}
-                    color="#FFD700"
+                    fontSize={10}
+                    color="black"
                     anchorX="center"
                     anchorY="middle"
                     castShadow   // Enables the text mesh to cast shadows
@@ -66,7 +52,7 @@ function App() {
                 <Text
                     position={[-6.5, -2, 0]}
                     fontSize={7}
-                    color="#7DF9FF"
+                    color="black"
                     anchorX="center"
                     anchorY="middle"
                     castShadow   // Enables the text mesh to cast shadows
@@ -74,20 +60,35 @@ function App() {
                     Web Developer
                 </Text>
         <Suspense fallback={null}>
-          <Environment preset="studio" background />
-          {bubbles}
+          <Environment preset={'studio'} />
+          <Bubbles />
         </Suspense>
         <OrbitControls />
-        <EffectComposer>
-          <Bloom
-            luminanceThreshold={0}
-            luminanceSmoothing={0.9}
-            intensity={0.3}
-          />
-        </EffectComposer>
       </Canvas>
     </div>
   )
 }
 
-export default App
+export default App;
+
+export const Bubbles = () => {
+  const bubbles = useMemo(
+    () =>
+      Array(30)
+        .fill()
+        .map((_, i) => {
+          const pos = [
+            20 - Math.random() * 40,
+            20 - Math.random() * 40,
+            20 - Math.random() * 40,
+          ]
+          return <Bubble position={pos} key={i} />
+        }),
+    [],
+  );
+  return (
+    <group>
+      {bubbles}
+    </group>
+  );
+};

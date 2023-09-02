@@ -1,4 +1,3 @@
-// Utility functions for the background color animation
 const interpolateColor = (color1, color2, factor) => {
     const result = color1.slice()
     for (let i = 0; i < 3; i++) {
@@ -25,7 +24,7 @@ let colorList = [
     [252, 163, 17]     // Orange-yellow
 ]
 
-let currentColorIndex = 0
+let currentColorIndex = Math.floor(Math.random() * colorList.length)
 let factor = 0
 
 export const animateBackgroundColor = () => {
@@ -34,7 +33,7 @@ export const animateBackgroundColor = () => {
 
     if (factor > 1) {
         factor = 0
-        currentColorIndex = (currentColorIndex + 1) % colorList.length
+        currentColorIndex = Math.floor(Math.random() * colorList.length)
     }
 
     const newColor = interpolateColor(startColors, endColors, easeInOutCubic(factor))
@@ -42,4 +41,8 @@ export const animateBackgroundColor = () => {
 
     factor += 0.005
     requestAnimationFrame(animateBackgroundColor)
+}
+
+window.onload = () => {
+    animateBackgroundColor()
 }
